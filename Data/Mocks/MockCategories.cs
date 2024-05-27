@@ -27,7 +27,7 @@ namespace PR37.Data.Mocks
                         Name = "Телевизоры",
                         Description = "Телевизоры - смотреть футбольчик."
                     }
-                }
+                };
             }
         }
     }
