@@ -2,18 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using PR37.Data.Interfaces;
+using PR37.Data.Mocks;
 using PR37.Data.Models;
 
 public class MockItems : IItems
 {
 	public MockItems()
     {
-		public ICategories category = new MockCategoties();
+		public ICategories category = new MockCategories();
 		public IEnumerable<Items> AllItems
 		{
             get
             {
-                return new List<Items>()
+            return new List<Items>()
                 {
                     new Items()
                     {
@@ -24,7 +25,7 @@ public class MockItems : IItems
                         Price = 7900,
                         Category = category.AllCategories.Where(x => x.Id == 0).First()
                     }
-                }
+                };
             }
 		}
 	}
