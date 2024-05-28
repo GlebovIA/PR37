@@ -7,6 +7,6 @@
         public string Description { get; set; }
         public string Img { get; set; }
         public int Price { get; set; }
-        public Categoties Category { get; set; }
+        public Categories Category { get; set; }
     }
 }
