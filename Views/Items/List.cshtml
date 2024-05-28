@@ -1,0 +1,16 @@
+﻿@using PR37.Data.Models
+@model IEnumerable<Items>
+@{
+    Layout = "_Layout";
+}
+<H2>Все предметы</H2>
+@{
+    foreach (var item in Model)
+    {
+        <div>
+            <H3>Модель: @item.Name</H3>
+            <p>Цена: @item.Price.ToString("c")</p>
+            <p>Категория: @item.Category.Name</p>
+        </div>
+    }
+}
