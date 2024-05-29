@@ -1,0 +1,12 @@
+﻿@using PR37.Data.Models
+@model IEnumerable<Categories>
+@{ Layout = "_Layout"; }
+<H2>Все категории</H2>
+@{ foreach (var categories in Model)
+    {
+    <div class="item">
+        <div class="data">
+            <H3>Категория: @categories.Name</H3>
+            <div>Цена: @categories.Description</div>
+        </div>
+    </div> } }
