@@ -5,6 +5,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="less - Копировать\**" />
+    <Content Remove="less - Копировать\**" />
+    <EmbeddedResource Remove="less - Копировать\**" />
+    <None Remove="less - Копировать\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Data\less\gulpfile.js" />
+    <Content Include="Data\less\Style.less" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="dotless" Version="1.6.7" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Certificate" Version="3.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
