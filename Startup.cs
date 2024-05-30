@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using PR37.Data.DataBase;
 using PR37.Data.Interfaces;
-using PR37.Data.Mocks;
 
 namespace PR37
 {
@@ -14,8 +14,8 @@ namespace PR37
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<ICategories, MockCategories>();
-            services.AddTransient<IItems, MockItems>();
+            services.AddTransient<ICategories, DBCategories>();
+            services.AddTransient<IItems, DBItems>();
             services.AddMvc(option => option.EnableEndpointRouting = false);
         }
 

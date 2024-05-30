@@ -1,15 +1,12 @@
-﻿using PR37.Data.Common;
+﻿using MySql.Data.MySqlClient;
+using PR37.Data.Common;
 using PR37.Data.Interfaces;
 using PR37.Data.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using MySql.Data.MySqlClient;
 
 namespace PR37.Data.DataBase
 {
-    public class DBCategory : ICategories
+    public class DBCategories : ICategories
     {
         public IEnumerable<Categories> AllCategories
         {
