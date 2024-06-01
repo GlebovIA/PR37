@@ -1,20 +1,79 @@
-﻿@using PR37.Data.Models
-@model IEnumerable<Items>
+﻿@using PR37.Data.ViewModels
+@model VMItems
 @{
     Layout = "_Layout";
 }
+<div>
+    <select onchange="SelectCategory(this)">
+        <option value="0">Выбрать...</option>
+        @{
+            foreach (var Category in Model.Categories)
+            {
+                if (Category.Id == Model.SelectCategory)
+                {
+                    <option selected="selected" value="@Category.Id">@Category.Name</option>
+                }
+                else
+                {
+                    <option value="@Category.Id">@Category.Name</option>
+                }
+            }
+        }
+    </select>
+    <script>
+        function SelectCategory(sender) {
+        window.location = "/Items/List?id=" + sender.value;
+        }
+    </script>
+</div>
+<div class="searcher">
+    <select onchange="SelectPriceOrientation(this)">
+        <option selected="selected" value="0">Выбрать...</option>
+        <option value="1">Дороже</option>
+        <option value="2">Дешевле</option>
+    </select>
+    <script>
+        function SelectPriceOrientation(sender) {
+            if (Model.SelectPriceOrientation == 2) {
+                @{ Model.Items.OrderBy(x => x.Price); }
+            }
+            else if (Model.SelectPriceOrientation == 2) {
+                @{ Model.Items.OrderByDescending(x => x.Price); }
+            }
+            window.location = "/Items/List?price=" + sender.value;
+        }
+    </script>
+</div>
 <H2>Все предметы</H2>
 @{
-    foreach (var item in Model)
+    foreach (var item in Model.Items)
     {
-        <div class="item">
-            <img src="@item.Img"/>
-            <div class="data">
-                <H3>Модель: @item.Name</H3>
-                <div>Цена: @item.Price.ToString("c")</div>
-                <div>Категория: @item.Category.Name</div>
-                <div>Описание: @item.Description</div>
-            </div>
-        </div>
+        if (Model.SelectCategory != 0)
+        {
+            if (item.Category.Id == Model.SelectCategory)
+            {
+                            <div class="item">
+                                <img src="@item.Img" />
+                                <div class="data">
+                                    <H3>Модель: @item.Name</H3>
+                                    <div>Цена: @item.Price.ToString("c")</div>
+                                    <div>Категория: @item.Category.Name</div>
+                                    <div>Описание: @item.Description</div>
+                                </div>
+                            </div>
+            }
+        }
+        else
+        {
+                        <div class="item">
+                            <img src="@item.Img" />
+                            <div class="data">
+                                <H3>Модель: @item.Name</H3>
+                                <div>Цена: @item.Price.ToString("c")</div>
+                                <div>Категория: @item.Category.Name</div>
+                                <div>Описание: @item.Description</div>
+                            </div>
+                        </div>
+        }
     }
 }
