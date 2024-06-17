@@ -34,4 +34,5 @@ public class MockItems : IItems
             };
         }
     }
+    public IEnumerable<Items> FindItems(string search_part) { return null; }
 }

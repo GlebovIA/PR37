@@ -6,5 +6,6 @@ namespace PR37.Data.Interfaces
     public interface IItems
     {
         public IEnumerable<Items> AllItems { get; }
+        public IEnumerable<Items> FindItems(string search_part);
     }
 }

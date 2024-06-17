@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using PR37.Data.ViewModels
+@using PR37.Data.Models
+@model VMItems
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -9,11 +12,19 @@
 <body>
     <div class="header">
         <img src="~/img/icon.png"/>
-        <input class="search" placeholder="Поиск по сайту"/>
+        <input class="search" id="searchBar" type="text" placeholder="Поиск по сайту" onkeydown="handleKeydown(event)" />
         <img class="basket" src="~/img/ic-basket.png" />
     </div>
     <div>
         @RenderBody()
+        <script>
+            function handleKeydown(event) {
+                var input = document.getElementById('searchBar').value;
+                if (event.key === 'Enter')
+                    window.location = $"/Items/FindItems?name={input}";
+                
+            }
+        </script>
     </div>
 </body>
 </html>
