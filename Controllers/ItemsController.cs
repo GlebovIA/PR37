@@ -45,8 +45,8 @@ namespace PR37.Controllers
         [HttpGet]
         public ViewResult Add()
         {
-            IEnumerable<Categories> categories = IAllCategories.AllCategories;
-            return View(Categories);
+            VMItems.Categories = IAllCategories.AllCategories;
+            return View(VMItems);
         }
         [HttpPost]
         public RedirectResult Add(string name, string description, IFormFile files, float price, int category)
@@ -65,6 +65,30 @@ namespace PR37.Controllers
             item.Category = new Categories() { Id = category };
             int id = IAllItems.Add(item);
             return Redirect("/Items/Update?id=" + id);
+        }
+        [HttpGet]
+        public ViewResult Update(int id)
+        {
+            VMItems.Items = IAllItems.AllItems;
+            VMItems.Categories = IAllCategories.AllCategories;
+            VMItems.SelectedItem = id;
+            return View(VMItems);
+        }
+        [HttpPost]
+        public void Update(int id, string name, string description, IFormFile files, float price, int category)
+        {
+            if (files != null)
+            {
+                var uploads = Path.Combine(hostingEnvironment.WebRootPath, "img");
+                var filePath = Path.Combine(uploads, files.FileName);
+                files.CopyTo(new FileStream(filePath, FileMode.Create));
+            }
+            Items item = IAllItems.AllItems.Where(x => x.Id == id).First();
+            item.Name = name;
+            item.Description = description;
+            item.Img = files.FileName;
+            item.Price = Convert.ToInt32(price);
+            item.Category = new Categories() { Id = category };
         }
     }
 }

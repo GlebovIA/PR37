@@ -1,9 +1,10 @@
 ﻿@using PR37.Data.Models
-@model IEnumerable<Categories>
+@using PR37.Data.ViewModels
+@model VMItems
 @{
-    Layout = "_Layout"
+    Layout = "_Layout";
 }
-<form method="post" enctype="multiple/form-data">
+<form method="post" enctype="multipart/form-data">
     <div>
         Наименование:
         <br /><input name="name" placeholder="Наименование:" />
@@ -18,17 +19,18 @@
     </div>
     <div>
         Стоимость:
-        <br /><input name="price"/>
+        <br /><input name="price" />
     </div>
     <div>
         Категория:
         <br /><select name="Category">
-        @{
-            foreach (var Category in Model){
-                <option value="@Category.id">@Category.Name</option>
+            @{
+                foreach (var Category in Model.Categories.ToList())
+                {
+                    <option value="@Category.Id">@Category.Name</option>
+                }
             }
-        }
         </select>
     </div>
-    <input type="submit"/>
+    <input type="submit" />
 </form>

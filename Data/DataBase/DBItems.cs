@@ -2,6 +2,7 @@
 using PR37.Data.Common;
 using PR37.Data.Interfaces;
 using PR37.Data.Models;
+using PR37.Data.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -58,11 +59,11 @@ namespace PR37.Data.DataBase
         public int Add(Items item)
         {
             MySqlConnection MySqlConnection = Connection.MySqlOpen();
-            Connection.MySqlQuery($"insert into `Items`(`Name`, `Description`, `Img`, `Price`, `IdCategory`) values (`{item.Name}`, `{item.Description}`, `{item.Img}`, {item.Price}, {item.Category.Id});", MySqlConnection);
+            Connection.MySqlQuery($"insert into `Items`(`Name`, `Description`, `Img`, `Price`, `IdCategory`) values ('{item.Name}', '{item.Description}', '{item.Img}', {item.Price}, {item.Category.Id});", MySqlConnection);
             MySqlConnection.Close();
             int IdItem = -1;
             MySqlConnection = Connection.MySqlOpen();
-            MySqlDataReader mySqlDataReader = Connection.MySqlQuery($"select `Id` from `Items` where `Name` = `{item.Name}` and `Description` = `{item.Description}` and `Img` = `{item.Img}` and `Price` = {item.Price} and `IdCategory` = {item.Category.Id};", MySqlConnection);
+            MySqlDataReader mySqlDataReader = Connection.MySqlQuery($"select `Id` from `Items` where `Name` = '{item.Name}' and `Description` = '{item.Description}' and `Img` = '{item.Img}' and `Price` = {item.Price} and `IdCategory` = {item.Category.Id};", MySqlConnection);
             if (mySqlDataReader.HasRows)
             {
                 mySqlDataReader.Read();
@@ -70,6 +71,13 @@ namespace PR37.Data.DataBase
             }
             MySqlConnection.Close();
             return IdItem;
+        }
+        public void Update(int id)
+        {
+            Items item = AllItems.Where(x => x.Id == id).First();
+            MySqlConnection MySqlConnection = Connection.MySqlOpen();
+            Connection.MySqlQuery($"update `Items`(`Name` = '{item.Name}', `Description` = '{item.Description}', `Img` = '{item.Img}', `Price` = {item.Price}, `IdCategory` = {item.Category.Id};) where `Id` = {item.Id});", MySqlConnection);
+            MySqlConnection.Close();
         }
     }
 }

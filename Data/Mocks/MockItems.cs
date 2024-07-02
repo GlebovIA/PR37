@@ -1,4 +1,5 @@
-﻿using PR37.Data.Interfaces;
+﻿using PR37.Controllers;
+using PR37.Data.Interfaces;
 using PR37.Data.Mocks;
 using PR37.Data.Models;
 using System.Collections.Generic;
@@ -35,5 +36,6 @@ public class MockItems : IItems
         }
     }
     public IEnumerable<Items> FindItems(string search_part) { return null; }
-    public int Add(Items item) { return -1; }
+    public int Add(Items item) { return 0; }
+    public void Update(int id) { }
 }
