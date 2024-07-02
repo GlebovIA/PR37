@@ -4,7 +4,7 @@ namespace PR37.Data.Common
 {
     public class Connection
     {
-        readonly static string ConnectionData = "server=127.0.0.1;port=3306;database=MyShop;uid=root;pwd=;";
+        readonly static string ConnectionData = "server=127.0.0.1;port=3308;database=MyShop;uid=root;pwd=;";
         public static MySqlConnection MySqlOpen()
         {
             MySqlConnection NewMySqlConnection = new MySqlConnection(ConnectionData);

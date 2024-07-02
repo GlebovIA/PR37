@@ -76,9 +76,11 @@
                 foreach (var item in Model.Items.OrderByDescending(x => x.Price))
                 {
                     if (categoryId != 0)
-                        if (item.Category.Id == categoryId) flag = true;
-                        else flag = false;
-                    else flag = true;
+                    {
+                        if (item.Category.Id == categoryId) { flag = true; }
+                        else { flag = false; }
+                    }
+                    else { flag = true; }
                     if (flag)
                     {
                         <div class="item">
@@ -97,9 +99,11 @@
                 foreach (var item in Model.Items.OrderBy(x => x.Price))
                 {
                     if (categoryId != 0)
-                        if (item.Category.Id == categoryId) flag = true;
-                        else flag = false;
-                    else flag = true;
+                    {
+                        if (item.Category.Id == categoryId) { flag = true; }
+                        else { flag = false; }
+                    }
+                    else { flag = true; }
                     if (flag)
                     {
                         <div class="item">
@@ -126,21 +130,23 @@
                             <div>Описание: @item.Description</div>
                         </div>
                     </div>
+                            }
+                            break;
+                    }
                 }
-                break;
-        }
-    }
-    if (priceOrientation == 0)
-    {
+                if (priceOrientation == 0)
+                {
 
-        foreach (var item in Model.Items)
-        {
-            if (categoryId != 0)
-                if (item.Category.Id == categoryId) flag = true;
-                else flag = false;
-            else flag = true;
-            if (flag)
-            {
+                    foreach (var item in Model.Items)
+                    {
+                        if (categoryId != 0)
+                        {
+                            if (item.Category.Id == categoryId) { flag = true; }
+                            else { flag = false; }
+                        }
+                        else { flag = true; }
+                        if (flag)
+                        {
                 <div class="item">
                     <img src="@item.Img" />
                     <div class="data">
@@ -151,6 +157,6 @@
                     </div>
                 </div>
             }
-        }
+    }
     }
 }
