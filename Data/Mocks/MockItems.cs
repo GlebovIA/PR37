@@ -35,4 +35,5 @@ public class MockItems : IItems
         }
     }
     public IEnumerable<Items> FindItems(string search_part) { return null; }
+    public int Add(Items item) { return -1; }
 }

@@ -55,5 +55,21 @@ namespace PR37.Data.DataBase
 
             return items;
         }
+        public int Add(Items item)
+        {
+            MySqlConnection MySqlConnection = Connection.MySqlOpen();
+            Connection.MySqlQuery($"insert into `Items`(`Name`, `Description`, `Img`, `Price`, `IdCategory`) values (`{item.Name}`, `{item.Description}`, `{item.Img}`, {item.Price}, {item.Category.Id});", MySqlConnection);
+            MySqlConnection.Close();
+            int IdItem = -1;
+            MySqlConnection = Connection.MySqlOpen();
+            MySqlDataReader mySqlDataReader = Connection.MySqlQuery($"select `Id` from `Items` where `Name` = `{item.Name}` and `Description` = `{item.Description}` and `Img` = `{item.Img}` and `Price` = {item.Price} and `IdCategory` = {item.Category.Id};", MySqlConnection);
+            if (mySqlDataReader.HasRows)
+            {
+                mySqlDataReader.Read();
+                IdItem = mySqlDataReader.GetInt32(0);
+            }
+            MySqlConnection.Close();
+            return IdItem;
+        }
     }
 }
