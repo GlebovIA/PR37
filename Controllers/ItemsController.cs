@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PR37.Data.Interfaces;
+using PR37.Data.Models;
 using PR37.Data.ViewModels;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace PR37.Controllers
@@ -32,6 +35,12 @@ namespace PR37.Controllers
             if (VMItems.Items.Count() > 0)
                 return View(VMItems);
             else return null;
+        }
+        [HttpGet]
+        public ViewResult Add()
+        {
+            IEnumerable<Categories> categories = IAllCategories.AllCategories;
+            return View(Categories);
         }
     }
 }
