@@ -100,5 +100,13 @@ namespace PR37.Controllers
             IAllItems.Delete(item);
             return Redirect("/Items/List");
         }
+        public ActionResult Basket(int idItem = -1)
+        {
+            if (idItem != -1)
+            {
+                Startup.BasketItems.Add(new ItemsBasket(1, IAllItems.AllItems.Where(x => x.Id == idItem).First()));
+            }
+            return Json(Startup.BasketItems);
+        }
     }
 }
