@@ -1,43 +1,43 @@
 ﻿@using PR37.Data.Models
 @using PR37.Data.ViewModels
-@model VMItems
+@model Items
 @{
     Layout = "_Layout";
-    Items item = Model.Items.Where(x => x.Id == Model.SelectedItem).First();
 }
     <form method="post" enctype="multipart/form-data">
         <div>
             Наименование:
-            <br /><input name="name" data="@item.Name" placeholder="Наименование:" />
+            <br /><input name="name" value="@Model.Name" placeholder="Наименование:" />
         </div>
         <div>
             Описание:
-            <br /><input name="description" data="@item.Description." placeholder="Описание:" />
+        <br /><input name="description" value="@Model.Description" placeholder="Описание:" />
         </div>
         <div>
             <label for="file">Изображение</label>
-            <br /><input name="files" data="@item.Img" type="file" />
+        <br /><input name="files" type="file" />
         </div>
         <div>
             Стоимость:
-            <br /><input name="price" data="@item.Price" />
+        <br /><input name="price" value="@Model.Price" />
         </div>
         <div>
             Категория:
             <br /><select name="Category">
-    @{
-        foreach (var Category in Model.Categories.ToList())
-        {
-            if (Category.Id == item.Category.Id)
-            {
-                <option value="@Category.Id" selected="selected">@Category.Name</option>
+            @{
+                foreach (var Category in VMItems.Categories)
+                {
+                    if (Category.Id == Model.Category.Id)
+                    {
+                        <option value="@Category.Id" selected="selected">@Category.Name</option>
+                    }
+                    else
+                    {
+                        <option value="@Category.Id">@Category.Name</option>
+                    }
+                }
             }
-            else
-            {
-                <option value="@Category.Id">@Category.Name</option>}
-            }
-    }
-</select>
+        </select>
         </div>
-        <input type="submit" />
-    </form>
+    <input type="submit" />
+</form>

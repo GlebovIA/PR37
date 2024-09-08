@@ -1,6 +1,5 @@
 ﻿@using PR37.Data.ViewModels
 @using PR37.Data.Models
-@model VMItems
 @{
     Layout = "_Layout";
 }
@@ -8,9 +7,9 @@
     <select id="category" onchange="SelectCategory(this)">
         <option value="0">Выбрать...</option>
         @{
-            foreach (var Category in Model.Categories)
+            foreach (var Category in VMItems.Categories)
             {
-                if (Category.Id == Model.SelectCategory)
+                if (Category.Id == VMItems.SelectCategory)
                 {
                     <option selected="selected" value="@Category.Id">@Category.Name</option>
                 }
@@ -26,7 +25,7 @@
 <script>
     function SelectCategory(sender) {
         var categoryId = sender.value;
-        var priceOrientation = "@Model.SelectPriceOrientation";
+        var priceOrientation = "@VMItems.SelectPriceOrientation";
         if (priceOrientation == "0") {
             window.location = "/Items/List?id=" + categoryId;
         }
@@ -42,14 +41,14 @@
         <option value="1">Дороже</option>
         <option value="2">Дешевле</option>
         <script>
-            var selectCategory = @Model.SelectPriceOrientation;
+            var selectCategory = @VMItems.SelectPriceOrientation;
             var selectElement = document.querySelector("select[name='priceSorter']");
             selectElement.value = selectCategory;
         </script>
     </select>
     <script>
         function SelectPriceOrientation(sender) {
-            var categoryId = "@Model.SelectCategory";
+            var categoryId = "@VMItems.SelectCategory";
             var priceOrientation = sender.value;
             if(categoryId == "0"){
                 window.location = "/Items/List?price=" + priceOrientation;
@@ -65,15 +64,15 @@
     var selectElement = document.querySelector("select[name='priceSorter']");
 </script>
 @{
-    var categoryId = @Model.SelectCategory;
-    var priceOrientation = @Model.SelectPriceOrientation;
+    var categoryId = VMItems.SelectCategory;
+    var priceOrientation = VMItems.SelectPriceOrientation;
     bool flag;
     if (priceOrientation != 0)
     {
         switch (priceOrientation)
         {
             case 1:
-                foreach (var item in Model.Items.OrderByDescending(x => x.Price))
+                foreach (var item in VMItems.Items.OrderByDescending(x => x.Price))
                 {
                     if (categoryId != 0)
                     {
@@ -96,7 +95,7 @@
                 }
                 break;
             case 2:
-                foreach (var item in Model.Items.OrderBy(x => x.Price))
+                foreach (var item in VMItems.Items.OrderBy(x => x.Price))
                 {
                     if (categoryId != 0)
                     {
@@ -119,7 +118,7 @@
                 }
                 break;
             case 0:
-                foreach (var item in Model.Items)
+                foreach (var item in VMItems.Items)
                 {
                     <div class="item">
                         <img src="@item.Img" />
@@ -137,7 +136,7 @@
                 if (priceOrientation == 0)
                 {
 
-                    foreach (var item in Model.Items)
+                    foreach (var item in VMItems.Items)
                     {
                         if (categoryId != 0)
                         {

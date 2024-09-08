@@ -5,10 +5,9 @@ namespace PR37.Data.ViewModels
 {
     public class VMItems
     {
-        public IEnumerable<Items> Items { get; set; }
-        public IEnumerable<Categories> Categories { get; set; }
-        public int SelectedItem { get; set; }
-        public int SelectCategory = 0;
-        public int SelectPriceOrientation = 0;
+        public static IEnumerable<Items> Items { get; set; }
+        public static IEnumerable<Categories> Categories { get; set; }
+        public static int SelectCategory = 0;
+        public static int SelectPriceOrientation = 0;
     }
 }

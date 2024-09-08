@@ -1,6 +1,6 @@
 ﻿@using PR37.Data.Models
 @using PR37.Data.ViewModels
-@model VMItems
+@model IEnumerable<Categories>
 @{
     Layout = "_Layout";
 }
@@ -25,9 +25,16 @@
         Категория:
         <br /><select name="Category">
             @{
-                foreach (var Category in Model.Categories.ToList())
+                foreach (var Category in Model.ToList())
                 {
-                    <option value="@Category.Id">@Category.Name</option>
+                    if(Category.Id == Model.First().Id)
+                    {
+                        <option value="@Category.Id" selected ="selected">@Category.Name</option>
+                    }
+                    else
+                    {
+                        <option value="@Category.Id">@Category.Name</option>
+                    }
                 }
             }
         </select>

@@ -8,6 +8,7 @@ namespace PR37.Data.Interfaces
         public IEnumerable<Items> AllItems { get; }
         public IEnumerable<Items> FindItems(string search_part);
         public int Add(Items item);
-        public void Update(int id);
+        public void Update(Items item);
+        public void Delete(Items item);
     }
 }

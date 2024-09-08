@@ -1,0 +1,13 @@
+﻿@using PR37.Data.Models
+@using PR37.Data.ViewModels
+@model IEnumerable<Categories>
+@{
+    Layout = "_Layout";
+}
+<form method="post" enctype="multipart/form-data">
+    <div>
+        Код элемента:
+        <br /><input name="id" placeholder="Код:" />
+    </div>
+    <input type="submit" />
+</form>

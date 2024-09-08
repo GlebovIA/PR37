@@ -5,8 +5,6 @@ using PR37.Data.Interfaces;
 using PR37.Data.Models;
 using PR37.Data.ViewModels;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -22,6 +20,8 @@ namespace PR37.Controllers
         {
             this.IAllItems = IAllItems;
             this.IAllCategories = IAllCategories;
+            VMItems.Categories = IAllCategories.AllCategories;
+            VMItems.Items = IAllItems.AllItems;
             this.hostingEnvironment = environment;
         }
         public ViewResult List(int id = 0, int price = 0)
@@ -31,7 +31,7 @@ namespace PR37.Controllers
             VMItems.Categories = IAllCategories.AllCategories;
             VMItems.SelectCategory = id;
             VMItems.SelectPriceOrientation = price;
-            return View(VMItems);
+            return View();
         }
         public ViewResult FindItems(string name = "")
         {
@@ -39,19 +39,18 @@ namespace PR37.Controllers
             VMItems.Items = IAllItems.FindItems(name);
             VMItems.Categories = IAllCategories.AllCategories;
             if (VMItems.Items.Count() > 0)
-                return View(VMItems);
+                return View();
             else return null;
         }
         [HttpGet]
         public ViewResult Add()
         {
-            VMItems.Categories = IAllCategories.AllCategories;
-            return View(VMItems);
+            return View(VMItems.Categories);
         }
         [HttpPost]
         public RedirectResult Add(string name, string description, IFormFile files, float price, int category)
         {
-            if(files != null)
+            if (files != null)
             {
                 var uploads = Path.Combine(hostingEnvironment.WebRootPath, "img");
                 var filePath = Path.Combine(uploads, files.FileName);
@@ -62,20 +61,17 @@ namespace PR37.Controllers
             item.Description = description;
             item.Img = files.FileName;
             item.Price = Convert.ToInt32(price);
-            item.Category = new Categories() { Id = category };
+            item.Category = VMItems.Categories.Where(x => x.Id == category).First();
             int id = IAllItems.Add(item);
             return Redirect("/Items/Update?id=" + id);
         }
         [HttpGet]
         public ViewResult Update(int id)
         {
-            VMItems.Items = IAllItems.AllItems;
-            VMItems.Categories = IAllCategories.AllCategories;
-            VMItems.SelectedItem = id;
-            return View(VMItems);
+            return View(VMItems.Items.Where(x => x.Id == id).First());
         }
         [HttpPost]
-        public void Update(int id, string name, string description, IFormFile files, float price, int category)
+        public RedirectResult Update(int id, string name, string description, IFormFile files, float price, int category)
         {
             if (files != null)
             {
@@ -88,7 +84,21 @@ namespace PR37.Controllers
             item.Description = description;
             item.Img = files.FileName;
             item.Price = Convert.ToInt32(price);
-            item.Category = new Categories() { Id = category };
+            item.Category = VMItems.Categories.Where(x => x.Id == category).First();
+            IAllItems.Update(item);
+            return Redirect("/Items/List");
+        }
+        [HttpGet]
+        public ViewResult Delete()
+        {
+            return View();
+        }
+        [HttpPost]
+        public RedirectResult Delete(int id)
+        {
+            Items item = IAllItems.AllItems.Where(x => x.Id == id).First();
+            IAllItems.Delete(item);
+            return Redirect("/Items/List");
         }
     }
 }
