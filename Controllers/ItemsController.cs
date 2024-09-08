@@ -108,5 +108,16 @@ namespace PR37.Controllers
             }
             return Json(Startup.BasketItems);
         }
+        public ActionResult BasketCount(int idItem = -1, int count = -1)
+        {
+            if (idItem != -1)
+            {
+                if (count == 0)
+                    Startup.BasketItems.Remove(Startup.BasketItems.Find(x => x.Id == idItem));
+                else
+                    Startup.BasketItems.Find(x => x.Id == idItem).Count = count
+            }
+            return Json(Startup.BasketItems);
+        }
     }
 }
