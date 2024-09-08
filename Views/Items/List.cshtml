@@ -11,11 +11,11 @@
             {
                 if (Category.Id == VMItems.SelectCategory)
                 {
-                    <option selected="selected" value="@Category.Id">@Category.Name</option>
+                                    <option selected="selected" value="@Category.Id">@Category.Name</option>
                 }
                 else
                 {
-                    <option value="@Category.Id">@Category.Name</option>
+                                    <option value="@Category.Id">@Category.Name</option>
                 }
             }
         }
@@ -82,25 +82,25 @@
                     else { flag = true; }
                     if (flag)
                     {
-                        <div class="item">
-                            <img src="@item.Img" />
-                            <div class="basket">
-                                <div class="button" id="@item.Id">
-                                    В корзину
-                                </div>
-                                <div class="count">
-                                    <div class="button min">-</div>
-                                    <div class="text">1</div>
-                                    <div class="button max">+</div>
-                                </div>
-                            </div>
-                            <div class="data">
-                                <H3>Модель: @item.Name</H3>
-                                <div>Цена: @item.Price.ToString("c")</div>
-                                <div>Категория: @item.Category.Name</div>
-                                <div>Описание: @item.Description</div>
-                            </div>
-                        </div>
+                                        <div class="item">
+                                            <img src="@item.Img" />
+                                            <div class="basket">
+                                                <div class="button" id="@item.Id">
+                                                    В корзину
+                                                </div>
+                                                <div class="count">
+                                                    <div class="button min">-</div>
+                                                    <div class="text">1</div>
+                                                    <div class="button max">+</div>
+                                                </div>
+                                            </div>
+                                            <div class="data">
+                                                <H3>Модель: @item.Name</H3>
+                                                <div>Цена: @item.Price.ToString("c")</div>
+                                                <div>Категория: @item.Category.Name</div>
+                                                <div>Описание: @item.Description</div>
+                                            </div>
+                                        </div>
                     }
                 }
                 break;
@@ -115,50 +115,50 @@
                     else { flag = true; }
                     if (flag)
                     {
-                        <div class="item">
-                            <img src="@item.Img" />
-                            <div class="basket">
-                                <div class="button" id="@item.Id">
-                                    В корзину
-                                </div>
-                                <div class="count">
-                                    <div class="button min">-</div>
-                                    <div class="text">1</div>
-                                    <div class="button max">+</div>
-                                </div>
-                            </div>
-                            <div class="data">
-                                <H3>Модель: @item.Name</H3>
-                                <div>Цена: @item.Price.ToString("c")</div>
-                                <div>Категория: @item.Category.Name</div>
-                                <div>Описание: @item.Description</div>
-                            </div>
-                        </div>
+                                        <div class="item">
+                                            <img src="@item.Img" />
+                                            <div class="basket">
+                                                <div class="button" id="@item.Id">
+                                                    В корзину
+                                                </div>
+                                                <div class="count">
+                                                    <div class="button min">-</div>
+                                                    <div class="text">1</div>
+                                                    <div class="button max">+</div>
+                                                </div>
+                                            </div>
+                                            <div class="data">
+                                                <H3>Модель: @item.Name</H3>
+                                                <div>Цена: @item.Price.ToString("c")</div>
+                                                <div>Категория: @item.Category.Name</div>
+                                                <div>Описание: @item.Description</div>
+                                            </div>
+                                        </div>
                     }
                 }
                 break;
             case 0:
                 foreach (var item in VMItems.Items)
                 {
-                    <div class="item">
-                        <img src="@item.Img" />
-                        <div class="basket">
-                            <div class="button" id="@item.Id">
-                                В корзину
-                            </div>
-                            <div class="count">
-                                <div class="button min">-</div>
-                                <div class="text">1</div>
-                                <div class="button max">+</div>
-                            </div>
-                        </div>
-                        <div class="data">
-                            <H3>Модель: @item.Name</H3>
-                            <div>Цена: @item.Price.ToString("c")</div>
-                            <div>Категория: @item.Category.Name</div>
-                            <div>Описание: @item.Description</div>
-                        </div>
-                    </div>
+                                    <div class="item">
+                                        <img src="@item.Img" />
+                                        <div class="basket">
+                                            <div class="button" id="@item.Id">
+                                                В корзину
+                                            </div>
+                                            <div class="count">
+                                                <div class="button min">-</div>
+                                                <div class="text">1</div>
+                                                <div class="button max">+</div>
+                                            </div>
+                                        </div>
+                                        <div class="data">
+                                            <H3>Модель: @item.Name</H3>
+                                            <div>Цена: @item.Price.ToString("c")</div>
+                                            <div>Категория: @item.Category.Name</div>
+                                            <div>Описание: @item.Description</div>
+                                        </div>
+                                    </div>
                             }
                             break;
                     }
@@ -176,26 +176,46 @@
                         else { flag = true; }
                         if (flag)
                         {
-                <div class="item">
-                    <img src="@item.Img" />
-                    <div class="basket">
-                        <div class="button" id="@item.Id">
-                            В корзину
-                        </div>
-                        <div class="count">
-                            <div class="button min">-</div>
-                            <div class="text">1</div>
-                            <div class="button max">+</div>
-                        </div>
-                    </div>
-                    <div class="data">
-                        <H3>Модель: @item.Name</H3>
-                        <div>Цена: @item.Price.ToString("c")</div>
-                        <div>Категория: @item.Category.Name</div>
-                        <div>Описание: @item.Description</div>
-                    </div>
-                </div>
+                                <div class="item">
+                                    <img src="@item.Img" />
+                                    <div class="basket">
+                                        <div class="button" id="@item.Id">
+                                            В корзину
+                                        </div>
+                                        <div class="count">
+                                            <div class="button min">-</div>
+                                            <div class="text">1</div>
+                                            <div class="button max">+</div>
+                                        </div>
+                                    </div>
+                                    <div class="data">
+                                        <H3>Модель: @item.Name</H3>
+                                        <div>Цена: @item.Price.ToString("c")</div>
+                                        <div>Категория: @item.Category.Name</div>
+                                        <div>Описание: @item.Description</div>
+                                    </div>
+                                </div>
             }
-    }
+        }
     }
 }
+<script>
+    $(".item").children(".basket").children(".button").click(function () {
+        $(this).parent().children(".count").show();
+        $(this).hide();
+        $.ajax({
+            url: '@Url.Action("Basket", "Items")',
+            contentType: "application/json; charset=utf-8",
+            DataTransfer: { idItem: $(this).attr('id') },
+            dataType: "json",
+            success: SuccessBasket,
+            error: AjaxError
+        });
+    });
+    function SuccessBasket(data) {
+        console.log(data);
+    }
+    function AjaxError(data){
+        console.log("Ошибка выполнения ajax");
+    }
+</script>
