@@ -82,25 +82,25 @@
                     else { flag = true; }
                     if (flag)
                     {
-                                                    <div class="item">
-                                                        <img src="@item.Img" />
-                                                        <div class="basket">
-                                                            <div class="button" id="@item.Id">
-                                                                В корзину
-                                                            </div>
-                                                            <div class="count">
-                                                                <div class="button min">-</div>
-                                                                <div class="text">1</div>
-                                                                <div class="button max">+</div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="data">
-                                                            <H3>Модель: @item.Name</H3>
-                                                            <div>Цена: @item.Price.ToString("c")</div>
-                                                            <div>Категория: @item.Category.Name</div>
-                                                            <div>Описание: @item.Description</div>
-                                                        </div>
-                                                    </div>
+                        <div class="item">
+                            <img src="~/img/@item.Img" />
+                            <div class="basket">
+                                <div class="button" id="@item.Id">
+                                    В корзину
+                                </div>
+                                <div class="count">
+                                    <div class="button min">-</div>
+                                    <div class="text">1</div>
+                                    <div class="button max">+</div>
+                                </div>
+                            </div>
+                            <div class="data">
+                                <H3>Модель: @item.Name</H3>
+                                <div>Цена: @item.Price.ToString("c")</div>
+                                <div>Категория: @item.Category.Name</div>
+                                <div>Описание: @item.Description</div>
+                            </div>
+                        </div>
                     }
                 }
                 break;
@@ -115,25 +115,25 @@
                     else { flag = true; }
                     if (flag)
                     {
-                                                    <div class="item">
-                                                        <img src="@item.Img" />
-                                                        <div class="basket">
-                                                            <div class="button" id="@item.Id">
-                                                                В корзину
-                                                            </div>
-                                                            <div class="count">
-                                                                <div class="button min">-</div>
-                                                                <div class="text">1</div>
-                                                                <div class="button max">+</div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="data">
-                                                            <H3>Модель: @item.Name</H3>
-                                                            <div>Цена: @item.Price.ToString("c")</div>
-                                                            <div>Категория: @item.Category.Name</div>
-                                                            <div>Описание: @item.Description</div>
-                                                        </div>
-                                                    </div>
+                        <div class="item">
+                            <img src="~/img/@item.Img" />
+                            <div class="basket">
+                                <div class="button" id="@item.Id">
+                                    В корзину
+                                </div>
+                                <div class="count">
+                                    <div class="button min">-</div>
+                                    <div class="text">1</div>
+                                    <div class="button max">+</div>
+                                </div>
+                            </div>
+                            <div class="data">
+                                <H3>Модель: @item.Name</H3>
+                                <div>Цена: @item.Price.ToString("c")</div>
+                                <div>Категория: @item.Category.Name</div>
+                                <div>Описание: @item.Description</div>
+                            </div>
+                        </div>
                     }
                 }
                 break;
@@ -141,7 +141,7 @@
                 foreach (var item in VMItems.Items)
                 {
                                                 <div class="item">
-                                                    <img src="@item.Img" />
+                        <img src="~/img/@item.Img" />
                                                     <div class="basket">
                                                         <div class="button" id="@item.Id">
                                                             В корзину
@@ -177,7 +177,7 @@
                         if (flag)
                         {
                                             <div class="item">
-                                                <img src="@item.Img" />
+                                                <img  src="~/img/@item.Img"/>
                                                 <div class="basket">
                                                     <div class="button" id="@item.Id">
                                                         В корзину

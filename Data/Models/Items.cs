@@ -10,7 +10,7 @@
         public Categories Category { get; set; }
         public Items(Items item = null)
         {
-            if (item == null)
+            if (item != null)
             {
                 Id = item.Id;
                 Name = item.Name;

@@ -115,7 +115,7 @@ namespace PR37.Controllers
                 if (count == 0)
                     Startup.BasketItems.Remove(Startup.BasketItems.Find(x => x.Id == idItem));
                 else
-                    Startup.BasketItems.Find(x => x.Id == idItem).Count = count
+                    Startup.BasketItems.Find(x => x.Id == idItem).Count = count;
             }
             return Json(Startup.BasketItems);
         }

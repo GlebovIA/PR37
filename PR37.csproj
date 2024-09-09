@@ -13,6 +13,8 @@
 
   <ItemGroup>
     <Content Remove="wwwroot\css\Style.css" />
+    <Content Remove="wwwroot\img\ic-basket.png" />
+    <Content Remove="wwwroot\img\icon.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,6 +30,11 @@
   <ItemGroup>
     <None Include="wwwroot\css\Style.css" />
     <None Include="wwwroot\less\Style.less" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="wwwroot\img\ic-basket.png" />
+    <Resource Include="wwwroot\img\icon.png" />
   </ItemGroup>
 
 </Project>
